@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" fill="none">
+  
+  <defs>
+    <pattern id="gramado" x="0" y="0" width="200" height="24" patternUnits="userSpaceOnUse">
+      <rect width="200" height="12" fill="#1A4D2E"></rect>
+      <rect y="12" width="200" height="12" fill="#143E25"></rect>
+    </pattern>
+  </defs>
+  <rect width="200" height="120" fill="url(#gramado)"></rect>
+</svg>
