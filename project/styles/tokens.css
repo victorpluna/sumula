@@ -1,0 +1,322 @@
+/* =========================================================
+   SÚMULA — Design Tokens
+   Sistema de Controle Financeiro para Grupos Esportivos
+   ========================================================= */
+
+/* ---------- Webfonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* =========================================================
+     COLORS — base palette
+     ========================================================= */
+
+  /* Brand — Verde Campo */
+  --campo-50:  #EEF6F0;
+  --campo-100: #D7E9DC;
+  --campo-200: #ABCFB6;
+  --campo-300: #7DB28F;
+  --campo-400: #4F9268;
+  --campo-500: #2E7D4F; /* interactive / hover */
+  --campo-600: #1A4D2E; /* PRIMARY */
+  --campo-700: #143E25;
+  --campo-800: #0E2E1A;
+  --campo-900: #081C10;
+
+  /* Cream Paper — neutral warm */
+  --paper-0:   #FFFFFF;
+  --paper-50:  #FBF9F2;
+  --paper-100: #F8F5EC; /* APP BG */
+  --paper-200: #F1ECDD; /* surface */
+  --paper-300: #E5DFCE;
+  --paper-400: #D2CBB6;
+
+  /* Ink — text neutrals (slightly green-black so it harmonizes) */
+  --ink-900: #0E1A14;
+  --ink-800: #1A2620;
+  --ink-700: #2E3833;
+  --ink-600: #46504B;
+  --ink-500: #5B6660; /* muted */
+  --ink-400: #8A938E; /* subtle / placeholders */
+  --ink-300: #B5BCB7;
+  --ink-200: #D6DAD6;
+  --ink-100: #E8EAE6;
+
+  /* Borders — warm-tinted */
+  --line-strong: #C9C2AC;
+  --line:        #E1DDCE;
+  --line-soft:   #EBE7DA;
+
+  /* Accent — Ouro Campeão */
+  --ouro-100: #FBF1CC;
+  --ouro-300: #ECCF6E;
+  --ouro-500: #C9A227; /* gold accent */
+  --ouro-700: #8B6E12;
+
+  /* Semantic — Financial */
+  --credit-50:  #E7F3EC;
+  --credit-500: #1A7A47;  /* receitas / pago */
+  --credit-700: #0F5132;
+
+  --debit-50:   #FBEAEA;
+  --debit-500:  #B84545;  /* despesas */
+  --debit-700:  #7E2929;
+
+  --pending-50:  #FBF1DE;
+  --pending-500: #C58A2A; /* pendente */
+  --pending-700: #8B5E0F;
+
+  --overdue-50:  #F8E0E0;
+  --overdue-500: #9A2C2C; /* inadimplente */
+  --overdue-700: #6B1818;
+
+  /* =========================================================
+     SEMANTIC COLOR ROLES
+     ========================================================= */
+  --bg:           var(--paper-100);
+  --bg-elevated:  var(--paper-0);
+  --bg-sunken:    var(--paper-200);
+  --bg-inverse:   var(--campo-800);
+
+  --surface:      var(--paper-0);
+  --surface-alt:  var(--paper-50);
+  --surface-sunk: var(--paper-200);
+
+  --fg:           var(--ink-900);
+  --fg-secondary: var(--ink-600);
+  --fg-muted:     var(--ink-500);
+  --fg-subtle:    var(--ink-400);
+  --fg-on-brand:  var(--paper-50);
+  --fg-on-gold:   var(--campo-800);
+
+  --border:        var(--line);
+  --border-strong: var(--line-strong);
+  --border-soft:   var(--line-soft);
+
+  --brand:        var(--campo-600);
+  --brand-hover:  var(--campo-500);
+  --brand-press:  var(--campo-700);
+  --brand-soft:   var(--campo-50);
+
+  --accent:       var(--ouro-500);
+  --accent-soft:  var(--ouro-100);
+
+  --success:      var(--credit-500);
+  --success-soft: var(--credit-50);
+  --danger:       var(--debit-500);
+  --danger-soft:  var(--debit-50);
+  --warning:      var(--pending-500);
+  --warning-soft: var(--pending-50);
+  --critical:     var(--overdue-500);
+  --critical-soft:var(--overdue-50);
+
+  /* =========================================================
+     TYPOGRAPHY — families
+     ========================================================= */
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale — fluid */
+  --text-display-1: clamp(40px, 6vw, 72px);
+  --text-display-2: clamp(32px, 4.5vw, 56px);
+  --text-h1:        clamp(28px, 3vw, 36px);
+  --text-h2:        clamp(22px, 2.4vw, 28px);
+  --text-h3:        20px;
+  --text-h4:        17px;
+  --text-body-lg:   17px;
+  --text-body:      15px;
+  --text-body-sm:   13px;
+  --text-caption:   12px;
+  --text-micro:     11px;
+  --text-num-xl:    clamp(36px, 5vw, 56px); /* dashboard hero number */
+  --text-num-lg:    28px;
+  --text-num:       17px;
+
+  /* Weights */
+  --w-regular:  400;
+  --w-medium:   500;
+  --w-semibold: 600;
+  --w-bold:     700;
+
+  /* =========================================================
+     SPACING — 4px base
+     ========================================================= */
+  --space-0:  0;
+  --space-1:  2px;
+  --space-2:  4px;
+  --space-3:  8px;
+  --space-4:  12px;
+  --space-5:  16px;
+  --space-6:  20px;
+  --space-7:  24px;
+  --space-8:  32px;
+  --space-9:  40px;
+  --space-10: 48px;
+  --space-11: 64px;
+  --space-12: 80px;
+  --space-13: 96px;
+
+  /* =========================================================
+     RADII
+     ========================================================= */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-pill: 999px;
+
+  /* =========================================================
+     SHADOWS — soft, warm-tinted
+     ========================================================= */
+  --shadow-xs:    0 1px 0 rgba(14, 26, 20, 0.04);
+  --shadow-sm:    0 1px 2px rgba(14, 26, 20, 0.05), 0 1px 1px rgba(14, 26, 20, 0.03);
+  --shadow-md:    0 4px 12px -2px rgba(14, 26, 20, 0.06), 0 2px 4px -1px rgba(14, 26, 20, 0.04);
+  --shadow-lg:    0 12px 32px -8px rgba(14, 26, 20, 0.10), 0 4px 12px -4px rgba(14, 26, 20, 0.06);
+  --shadow-xl:    0 24px 56px -12px rgba(14, 26, 20, 0.16), 0 8px 24px -8px rgba(14, 26, 20, 0.08);
+  --shadow-inner: inset 0 1px 2px rgba(14, 26, 20, 0.05);
+
+  --ring-focus:   0 0 0 3px rgba(46, 125, 79, 0.22);
+  --ring-danger:  0 0 0 3px rgba(184, 69, 69, 0.22);
+
+  /* =========================================================
+     LAYOUT
+     ========================================================= */
+  --sidebar-w:   240px;
+  --sidebar-collapsed-w: 64px;
+  --topbar-h:    64px;
+  --content-max: 1280px;
+
+  /* =========================================================
+     MOTION
+     ========================================================= */
+  --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.32, 0.64, 1);
+  --dur-fast:    120ms;
+  --dur:         180ms;
+  --dur-slow:    280ms;
+}
+
+/* =========================================================
+   BASE TYPOGRAPHY — Semantic elements
+   ========================================================= */
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: var(--fg);
+  background: var(--bg);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: var(--w-semibold);
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+h2 {
+  font-size: var(--text-h2);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+h3 {
+  font-size: var(--text-h3);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+h4 {
+  font-size: var(--text-h4);
+  line-height: 1.35;
+  font-family: var(--font-sans);
+  letter-spacing: -0.005em;
+}
+
+p {
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: var(--fg);
+  text-wrap: pretty;
+}
+
+small, .text-caption {
+  font-size: var(--text-caption);
+  color: var(--fg-muted);
+}
+
+.text-micro {
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--w-semibold);
+  color: var(--fg-muted);
+}
+
+.text-display-1 {
+  font-family: var(--font-display);
+  font-size: var(--text-display-1);
+  font-weight: var(--w-semibold);
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+}
+.text-display-2 {
+  font-family: var(--font-display);
+  font-size: var(--text-display-2);
+  font-weight: var(--w-semibold);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+code, kbd, .text-mono, .num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum", "ss01";
+  font-variant-numeric: tabular-nums;
+}
+
+/* Big numbers: dashboard, totals */
+.num-display {
+  font-family: var(--font-mono);
+  font-weight: var(--w-semibold);
+  font-size: var(--text-num-xl);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg);
+}
+.num-lg {
+  font-family: var(--font-mono);
+  font-weight: var(--w-semibold);
+  font-size: var(--text-num-lg);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+  text-underline-offset: 2px;
+  transition: color var(--dur) var(--ease-out);
+}
+a:hover {
+  color: var(--brand-hover);
+  text-decoration: underline;
+}
+
+::selection {
+  background: var(--ouro-300);
+  color: var(--campo-800);
+}
