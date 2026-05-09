@@ -54,7 +54,7 @@ export const Relatorios = ({ data }: RelatoriosProps) => {
 
 const RelGeral = ({ recebido, despesas, saldo, pendente, data }: { recebido: number; despesas: number; saldo: number; pendente: number; data: AppData }) => (
   <>
-    <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 16, marginBottom: 16 }}>
+    <div className="rel-stats-grid" style={{ marginBottom: 16 }}>
       <StatCard brand label="Saldo acumulado" value={<><span className="currency">R$</span>{fmtMoney(saldo)}</>} sub="Caixa atual" />
       <StatCard label="Total recebido" value={<><span className="currency">R$</span>{fmtMoney(recebido)}</>} sub="Acumulado em 2025" />
       <StatCard label="Total despesas" value={<><span className="currency">R$</span>{fmtMoney(despesas)}</>} sub={`${data.movs.filter((m) => m.tipo === 'debit').length} saídas`} />
@@ -103,7 +103,7 @@ const RelInadimplencia = ({ data, inadimplentes, onExtrato }: { data: AppData; i
   }, 0);
   return (
     <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16, marginBottom: 16 }}>
+      <div className="rel-three-col" style={{ marginBottom: 16 }}>
         <StatCard label="Em aberto" danger value={<><span className="currency">R$</span>{fmtMoney(totalAberto)}</>} sub={`${inadimplentes.length} mensalistas`} />
         <StatCard label="Mensalistas em dia" value={String(data.participantes.filter((p) => p.ativo && !data.movs.some((m) => m.participanteId === p.id && (m.status === 'pendente' || m.status === 'vencido'))).length)} sub={`de ${data.participantes.filter((p) => p.ativo).length} ativos`} />
         <StatCard label="Taxa de adimplência" value={`${Math.round((1 - inadimplentes.length / Math.max(1, data.participantes.filter((p) => p.ativo).length)) * 100)}%`} sub="Mês corrente" />
@@ -216,7 +216,7 @@ const RelExtrato = ({ data, selectedId, onSelect }: { data: AppData; selectedId:
   const aberto = items.filter((m) => m.status !== 'pago').reduce((s, m) => s + m.valor, 0);
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: 16 }}>
+    <div className="rel-extrato-grid">
       <div className="card card-pad-0" style={{ alignSelf: 'start' }}>
         <div className="card-header"><h3>Mensalistas</h3></div>
         <div style={{ maxHeight: 480, overflowY: 'auto' }}>

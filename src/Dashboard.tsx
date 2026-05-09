@@ -73,7 +73,7 @@ const DashCardsLayout = ({ data, stats, chartMax, proximos, ultimas, onMarkPaid 
   const { recebido, pendente, despesas, saldo, inadimplentes } = stats;
   return (
     <>
-      <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 16, marginBottom: 20 }}>
+      <div className="dash-stats-grid" style={{ marginBottom: 20 }}>
         <StatCard
           brand
           label="Saldo do mês"
@@ -98,12 +98,12 @@ const DashCardsLayout = ({ data, stats, chartMax, proximos, ultimas, onMarkPaid 
         />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 16, marginBottom: 16 }}>
+      <div className="dash-main-grid" style={{ marginBottom: 16 }}>
         <ChartCard chartMax={chartMax} />
         <ProximosCard items={proximos} data={data} onMarkPaid={onMarkPaid} />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="dash-two-col">
         <UltimasCard items={ultimas} data={data} />
         <InadimplentesCard data={data} />
       </div>
@@ -182,7 +182,7 @@ const DashListLayout = ({ data, stats, chartMax, proximos, onMarkPaid }: LayoutP
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 16 }}>
+      <div className="dash-main-grid">
         <ChartCard chartMax={chartMax} />
         <ProximosCard items={proximos} data={data} onMarkPaid={onMarkPaid} />
       </div>

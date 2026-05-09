@@ -6,6 +6,8 @@ interface SidebarProps {
   onNavigate: (page: Page) => void;
   collapsed?: boolean;
   onToggleCollapse?: () => void;
+  mobileOpen?: boolean;
+  onMobileClose?: () => void;
 }
 
 const items = [
@@ -16,8 +18,8 @@ const items = [
   { id: 'relatorios'   as const, label: 'Relatórios',    icon: Icons.Chart     },
 ];
 
-export const Sidebar = ({ route, onNavigate, collapsed = false, onToggleCollapse }: SidebarProps) => (
-  <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
+export const Sidebar = ({ route, onNavigate, collapsed = false, onToggleCollapse, mobileOpen = false, onMobileClose }: SidebarProps) => (
+  <aside className={`sidebar ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
     <div className="sb-brand">
       <img src="/assets/logo-mark.svg" alt="" />
       <span className="name">
@@ -40,7 +42,7 @@ export const Sidebar = ({ route, onNavigate, collapsed = false, onToggleCollapse
         <button
           key={it.id}
           className={`sb-item ${active ? 'active' : ''}`}
-          onClick={() => onNavigate(it.id)}
+          onClick={() => { onNavigate(it.id); onMobileClose?.(); }}
           title={collapsed ? it.label : undefined}
         >
           <Ico />

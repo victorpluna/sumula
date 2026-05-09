@@ -7,9 +7,10 @@ interface TopbarProps {
   crumb: string;
   onLogout: () => void;
   notifications?: Notification[];
+  onOpenSidebar?: () => void;
 }
 
-export const Topbar = ({ crumb, onLogout, notifications = [] }: TopbarProps) => {
+export const Topbar = ({ crumb, onLogout, notifications = [], onOpenSidebar }: TopbarProps) => {
   const [openNotif, setOpenNotif] = useState(false);
   const notifRef = useRef<HTMLDivElement>(null);
 
@@ -26,6 +27,9 @@ export const Topbar = ({ crumb, onLogout, notifications = [] }: TopbarProps) => 
 
   return (
     <header className="topbar">
+      <button className="tb-hamburger" onClick={onOpenSidebar} aria-label="Abrir menu">
+        <Icons.Menu size={16} />
+      </button>
       <div className="tb-crumbs">
         <span>Real Vila Mariana FC</span>
         <span className="sep">/</span>

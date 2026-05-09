@@ -105,7 +105,7 @@ export const Categorias = ({ data, onAdd, onUpdate }: CategoriasProps) => {
         <span className="count">{data.categorias.length} categorias no total</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="cat-grid">
         <Section title="Receitas" items={creditos} kind="credit" hint="Mensalidades, patrocínios, vendas." />
         <Section title="Despesas" items={debitos} kind="debit" hint="Aluguel da quadra, arbitragem, uniformes." />
       </div>

@@ -40,6 +40,7 @@ const App = () => {
   const [data, setData] = useState<AppData>(seedData);
   const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
   const [autoOpenMov, setAutoOpenMov] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const goto = (p: Page, opts: { openNew?: boolean } = {}) => {
     setPage(p);
@@ -103,17 +104,21 @@ const App = () => {
 
   return (
     <ToastProvider>
+      <div className={`sidebar-overlay ${mobileOpen ? 'visible' : ''}`} onClick={() => setMobileOpen(false)} />
       <div className={`app-shell ${collapsed ? 'collapsed' : ''}`} data-accent={accentMap[tweaks.accentTone] || 'campo'}>
         <Sidebar
           route={page}
           onNavigate={goto}
           collapsed={collapsed}
           onToggleCollapse={() => setTweak('sidebarCollapsed', !collapsed)}
+          mobileOpen={mobileOpen}
+          onMobileClose={() => setMobileOpen(false)}
         />
         <div className="app-main">
           <Topbar
             crumb={crumbLabel[page]}
             onLogout={() => setAuthed(false)}
+            onOpenSidebar={() => setMobileOpen(true)}
             notifications={[
               { icon: Icons.AlertCircle, title: '2 mensalidades vencidas hoje', sub: 'Otávio Rocha · Paulo Henrique', read: false },
               { icon: Icons.Receipt, title: 'Pagamento de Bruno Vasconcellos confirmado', sub: 'há 12 minutos', read: false },

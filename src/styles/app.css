@@ -820,3 +820,168 @@ table.t td.num, table.t th.num {
 }
 .btn-inline:hover { background: var(--credit-50); color: var(--credit-700); border-color: var(--credit-500); }
 .btn-inline svg { width: 12px; height: 12px; stroke-width: 2; }
+
+/* ============================================================
+   GRID LAYOUT CLASSES (responsive-ready)
+   ============================================================ */
+.dash-stats-grid  { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 16px; }
+.dash-main-grid   { display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; }
+.dash-two-col     { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.rel-stats-grid   { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 16px; }
+.rel-three-col    { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.rel-extrato-grid { display: grid; grid-template-columns: 260px 1fr; gap: 16px; }
+.cat-grid         { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.login-layout     { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+
+/* ============================================================
+   HAMBURGER BUTTON & SIDEBAR OVERLAY
+   ============================================================ */
+.tb-hamburger {
+  display: none;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--paper-0);
+  color: var(--ink-700);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--dur-fast);
+}
+.tb-hamburger:hover { background: var(--paper-50); }
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 26, 20, 0.4);
+  z-index: 38;
+  display: none;
+}
+.sidebar-overlay.visible { display: block; animation: fadeIn var(--dur-slow) var(--ease-out); }
+
+/* ============================================================
+   RESPONSIVE — Tablet (≤ 1000px) additions
+   ============================================================ */
+@media (max-width: 1000px) {
+  .tb-search { min-width: 200px; }
+  .dash-stats-grid  { grid-template-columns: 1fr 1fr; }
+  .dash-main-grid   { grid-template-columns: 1fr; }
+  .rel-stats-grid   { grid-template-columns: 1fr 1fr; }
+  .rel-extrato-grid { grid-template-columns: 200px 1fr; }
+}
+
+/* ============================================================
+   RESPONSIVE — Mobile (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  /* App shell — sidebar leaves the flow */
+  .app-shell,
+  .app-shell.collapsed { grid-template-columns: 1fr; }
+
+  /* Sidebar as slide-in drawer */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 40;
+    width: var(--sidebar-w);
+    transform: translateX(-100%);
+    transition: transform var(--dur) var(--ease-out);
+  }
+  .sidebar.mobile-open { transform: translateX(0); }
+
+  /* Topbar */
+  .topbar { padding: 0 16px; gap: 10px; }
+  .tb-hamburger { display: inline-flex; }
+  .tb-search { display: none; }
+  .tb-crumbs > span:not(.here),
+  .tb-crumbs .sep { display: none; }
+  .tb-crumbs .here { font-size: 15px; }
+  .topbar .btn-ghost { font-size: 0; padding: 8px; }
+  .topbar .btn-ghost svg { width: 16px; height: 16px; }
+
+  /* Content */
+  .app-content { padding: 16px 16px 72px; }
+
+  /* Page header */
+  .page-header { flex-direction: column; align-items: flex-start; margin-bottom: 20px; gap: 12px; }
+  .page-header h1 { font-size: clamp(22px, 6vw, 28px); }
+  .page-header .actions { width: 100%; }
+
+  /* Tables — horizontal scroll */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Filters — stack vertically */
+  .filters { flex-direction: column; }
+  .filters .input-group { min-width: 0 !important; width: 100%; }
+  .filters select.input { min-width: 0 !important; width: 100%; }
+  .filters .count { text-align: right; }
+  .filters .input-group input { min-width: 0; }
+
+  /* Modal — bottom sheet */
+  .modal-backdrop { padding: 0; align-items: flex-end; }
+  .modal, .modal-wide {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  /* Toast */
+  .toast-stack { left: 12px; right: 12px; bottom: 16px; }
+  .toast { max-width: none; }
+
+  /* Tabs — horizontal scroll */
+  .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; }
+  .tab { white-space: nowrap; flex-shrink: 0; }
+
+  /* Notification popover */
+  .notif-popover { width: min(360px, calc(100vw - 32px)); }
+
+  /* Hero card */
+  .hero-card { padding: 20px; }
+  .hero-card .hero-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .hero-card .hero-num { font-size: clamp(32px, 8vw, 44px); }
+
+  /* Dash list row — hide the bar on mobile */
+  .dash-list-row { grid-template-columns: 1fr auto; gap: 12px; }
+  .dash-list-row > div:nth-child(2) { display: none; }
+
+  /* Dashboard grids */
+  .dash-stats-grid { grid-template-columns: 1fr 1fr; }
+  .dash-two-col     { grid-template-columns: 1fr; }
+
+  /* Reports */
+  .rel-three-col   { grid-template-columns: 1fr; }
+  .rel-extrato-grid { grid-template-columns: 1fr; }
+
+  /* Categories */
+  .cat-grid { grid-template-columns: 1fr; }
+
+  /* Login */
+  .login-layout { grid-template-columns: 1fr; }
+  .login-right-panel { display: none; }
+}
+
+/* ============================================================
+   RESPONSIVE — Small mobile (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .app-content { padding: 12px 12px 64px; }
+  .dash-stats-grid { grid-template-columns: 1fr; }
+  .dash-two-col     { grid-template-columns: 1fr; }
+  .rel-stats-grid   { grid-template-columns: 1fr; }
+  .rel-three-col    { grid-template-columns: 1fr; }
+  .hero-card .hero-grid { grid-template-columns: 1fr; }
+  .hero-card .hero-num  { font-size: 32px; }
+  .stat-card .stat-value { font-size: 22px; }
+  .stat-card .stat-value .currency { font-size: 15px; }
+  .notif-popover {
+    position: fixed;
+    top: var(--topbar-h);
+    left: 8px;
+    right: 8px;
+    width: auto;
+  }
+}

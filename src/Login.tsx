@@ -27,7 +27,7 @@ export const Login = ({ onLogin }: LoginProps) => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+    <div className="login-layout">
       {/* Left — form */}
       <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '48px 32px', background: 'var(--paper-100)' }}>
         <div style={{ width: '100%', maxWidth: 380 }}>
@@ -120,7 +120,7 @@ export const Login = ({ onLogin }: LoginProps) => {
       </div>
 
       {/* Right — brand panel */}
-      <div style={{ background: 'var(--campo-700)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 56, position: 'relative', overflow: 'hidden' }}>
+      <div className="login-right-panel" style={{ background: 'var(--campo-700)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 56, position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(transparent 0%, transparent 50%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.03) 100%)', backgroundSize: '100% 32px' }} />
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--campo-300)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>Súmula · v1.0</div>
